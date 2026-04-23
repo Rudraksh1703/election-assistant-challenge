@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Process Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Election Process Assistant</h1>
+        <div class="controls">
+            <button id="contrast-toggle" aria-label="Toggle High-Contrast Mode">🌓 High Contrast</button>
+            <button id="voice-btn" aria-label="Voice Input">🎤 Voice Input</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="assistant-panel">
+            <div id="chat-box" class="chat-container" aria-live="polite">
+                <div class="message assistant">Hello! I'm your Election Assistant. Ask me about eligibility, voting steps, election timelines, or say "quiz" for a civic quiz!</div>
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type your message here..." aria-label="Chat input">
+                <button id="send-btn" aria-label="Send message">Send</button>
+            </div>
+        </section>
+        
+        <section class="features-panel">
+            <div class="action-buttons">
+                <a href="https://www.google.com/maps/search/?api=1&query=polling+station+near+me" target="_blank" rel="noopener noreferrer" class="maps-btn" id="maps-btn" aria-label="Find Polling Station near me on Google Maps">📍 Find Polling Station</a>
+                <button id="dates-btn" aria-label="Fetch local election dates">📅 Check Local Dates</button>
+            </div>
+
+            <div id="dynamic-content-area">
+                <!-- Checklist will appear here dynamically -->
+            </div>
+
+            <div class="timeline-container">
+                <canvas id="timelineChart" aria-label="Election Timeline Chart" role="img"></canvas>
+            </div>
+
+            <div id="quiz-container" class="hidden" aria-live="polite">
+                <h2>Civic Quiz</h2>
+                <div id="quiz-question"></div>
+                <div id="quiz-options"></div>
+                <div id="quiz-feedback"></div>
+                <p>Score: <span id="quiz-score">0</span></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
