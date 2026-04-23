@@ -85,6 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (/(steps|how to|process)/.test(lowerText)) return { intent: 'steps' };
         if (/(timeline|when|stages)/.test(lowerText)) return { intent: 'timeline' };
         if (/(quiz|test me|learn)/.test(lowerText)) return { intent: 'quiz' };
+        if (/(bengal|west bengal)/.test(lowerText)) {
+            if (/(last|past|result|2021)/.test(lowerText)) return { intent: 'bengal_last' };
+            return { intent: 'bengal_news' };
+        }
         
         return { intent: 'unknown' };
     }
@@ -114,8 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 addMessage("Let's test your civic knowledge! Look at the quiz panel.", 'assistant');
                 startQuiz();
                 break;
+            case 'bengal_news':
+                addMessage("West Bengal Elections News: The 2026 West Bengal Legislative Assembly election is scheduled in two phases, with polling dates on April 23 and April 29, 2026. The counting of votes and the declaration of results are set for May 4, 2026.", 'assistant');
+                break;
+            case 'bengal_last':
+                addMessage("2021 West Bengal Election Results: The All India Trinamool Congress (AITC/TMC) led by Mamata Banerjee won a landslide victory with 213 seats (48.02% vote share). The BJP won 77 seats, becoming the official opposition.", 'assistant');
+                break;
             default:
-                addMessage("I'm not sure about that. Try asking about 'eligibility', 'voting steps', 'election timeline', or 'quiz'.", 'assistant');
+                addMessage("I'm not sure about that. Try asking about 'eligibility', 'voting steps', 'election timeline', 'bengal news' or 'quiz'.", 'assistant');
         }
     }
 
