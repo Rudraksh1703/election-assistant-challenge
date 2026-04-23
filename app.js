@@ -83,12 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (/(eligible|can i vote|register|requirements)/.test(lowerText)) return { intent: 'eligibility' };
         if (/(steps|how to|process)/.test(lowerText)) return { intent: 'steps' };
-        if (/(timeline|when|stages)/.test(lowerText)) return { intent: 'timeline' };
         if (/(quiz|test me|learn)/.test(lowerText)) return { intent: 'quiz' };
+
         if (/(bengal|west bengal)/.test(lowerText)) {
-            if (/(last|past|result|2021)/.test(lowerText)) return { intent: 'bengal_last' };
+            if (/(last|past|result|2021|won)/.test(lowerText)) return { intent: 'bengal_last' };
             return { intent: 'bengal_news' };
         }
+
+        if (/(timeline|when|stages)/.test(lowerText)) return { intent: 'timeline' };
         
         return { intent: 'unknown' };
     }
